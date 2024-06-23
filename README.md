@@ -1,33 +1,36 @@
-C64 PRG to CRT Converter
+# C64 PRG to CRT Converter
+
 This PowerShell script converts a C64 PRG file to a CRT file compatible with various cartridge types, defaulting to EasyFlash.
 
-Description
+## Description
+
 The script reads a C64 PRG file and converts it to a CRT file format compatible with different cartridge types. The default cartridge type is EasyFlash, but it also supports other types such as Normal 8k, Normal 16k, Ultimax, and Ocean Type 1.
 
-Based on the Python script from Frank Buss: Frank Buss's PRG2CRT
+Based on the Python script from Frank Buss: [Frank Buss's PRG2CRT](https://frank-buss.de/c64/prg2crt/index.html)
 
-Parameters
-inputPrg: Specifies the path to the input PRG file.
+## Parameters
 
-outputCrt: Specifies the path to the output CRT file.
+- **inputPrg**: Specifies the path to the input PRG file.
+- **outputCrt**: Specifies the path to the output CRT file.
+- **cartridgeType**: Specifies the cartridge type for the output CRT file. Valid values are:
+  - "Normal8k"
+  - "Normal16k"
+  - "Ultimax"
+  - "OceanType1"
+  - "EasyFlash"
+  - "EasyFlashXbank"
 
-cartridgeType: Specifies the cartridge type for the output CRT file. Valid values are:
+  The default value is "EasyFlash".
 
-"Normal8k"
-"Normal16k"
-"Ultimax"
-"OceanType1"
-"EasyFlash"
-"EasyFlashXbank"
-The default value is "EasyFlash".
+## Usage Example
 
-Usage Example
-powershell
-Copy code
+```powershell
 .\prg2crt.ps1 -inputPrg "C:\path\to\input.prg" -outputCrt "C:\path\to\output.crt" -cartridgeType "EasyFlash"
-Script Details
-powershell
-Copy code
+```
+
+## Script Details
+
+```powershell
 <# 
 .SYNOPSIS 
 Converts a C64 PRG file to a CRT file compatible with various cartridge types, defaulting to EasyFlash.
@@ -186,11 +189,16 @@ for ($bank = 0; $bank -lt $banks; $bank++) {
 
 # Save module
 [System.IO.File]::WriteAllBytes($outputCrt, $crtData.ToArray())
-Contributions
+```
+
+## Contributions
+
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-License
+## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgements
-Special thanks to Frank Buss for the original Python script: Frank Buss's PRG2CRT.
+## Acknowledgements
+
+Special thanks to Frank Buss for the original Python script: [Frank Buss's PRG2CRT](https://frank-buss.de/c64/prg2crt/index.html).
